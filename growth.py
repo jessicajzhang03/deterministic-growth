@@ -7,6 +7,7 @@ import pprint as pp
 UPGRADE = [(0,1),(0,-1),(1,0),(-1,0)]
 
 def x(n):
+    """Given n, returns the list [A_i for i in range(n)]"""
     if not n:
         return [set([(0,0)])]
     prev = x(n-1)
