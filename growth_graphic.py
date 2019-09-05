@@ -6,7 +6,7 @@ import random
 ALIVE = [1.0]
 DEAD = [0]
 
-dim = 100
+dim = 250
 center = dim//2
 neighborhood = ca.VonNeumannNeighborhood(ca.EdgeRule.IGNORE_EDGE_CELLS)
 
@@ -16,10 +16,13 @@ class SimpleProcess(ca.Rule):
         return [init]
 
     def evolve_cell(self,last_cell_state,neighbors_last_states):
-        new_cell_state = last_cell_state
         alive_neighbors = self.__count_alive_neighbors(neighbors_last_states)
-        if alive_neighbors == 1:
+        if last_cell_state==ALIVE:
             new_cell_state = ALIVE
+        elif alive_neighbors == 1:
+            new_cell_state = ALIVE 
+        else:
+            new_cell_state = DEAD
         return new_cell_state
     
     @staticmethod
