@@ -1,4 +1,5 @@
 Size of X_i - X_(i+1) for i between 1 and 128
+Size of X_i for i between 1 and 128
 1
 4
 4

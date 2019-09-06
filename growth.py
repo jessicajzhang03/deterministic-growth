@@ -7,7 +7,6 @@ import pprint as pp
 UPGRADE = [(0,1),(0,-1),(1,0),(-1,0)]
 
 def x(n):
-    """Given n, returns the list [A_i for i in range(n)]"""
     if not n:
         return [set([(0,0)])]
     prev = x(n-1)
@@ -16,9 +15,16 @@ def x(n):
     added = set(x for x in c if c[x]==1 and x not in total)
     return prev + [added]
 
-with open('size_of_An.txt','w') as f:
-    n = 128
-    up_to_n = x(n)
-    f.write('Size of X_i - X_(i+1) for i between 1 and {}\n'.format(n))
-    for exactly_n in up_to_n:
-        f.write(str(len(exactly_n))+'\n')
+f = open('size_of_An.txt','w')
+g = open('size_of_Xn.txt','w')
+n = 128
+up_to_n = x(n)
+total = 0
+f.write('Size of X_i - X_(i+1) for i between 1 and {}\n'.format(n))
+f.write('Size of X_i for i between 1 and {}\n'.format(n))
+for exactly_n in up_to_n:
+    total += len(exactly_n)
+    f.write(str(len(exactly_n))+'\n')
+    g.write(str(total)+'\n')
+f.close()
+g.close()
