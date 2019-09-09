@@ -6,7 +6,7 @@ import random
 ALIVE = [1.0]
 DEAD = [0]
 
-dim = 250
+dim = int(input())
 center = dim//2
 neighborhood = ca.VonNeumannNeighborhood(ca.EdgeRule.IGNORE_EDGE_CELLS)
 
@@ -40,6 +40,6 @@ process = ca.CAFactory.make_multi_process_cellular_automaton(
     dimension=[dim,dim],
     neighborhood=neighborhood,
     rule=SimpleProcess,
-    processes=4)
+    processes=1)
 
 ca_window = ca.CAWindow(cellular_automaton=process, evolution_steps_per_draw=1)
