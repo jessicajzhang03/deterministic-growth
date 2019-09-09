@@ -7,12 +7,12 @@ ALIVE = [1.0]
 DEAD = [0]
 
 dim = int(input())
-center = dim//2
+initial_set = [(dim//2,dim//2)]
 neighborhood = ca.VonNeumannNeighborhood(ca.EdgeRule.IGNORE_EDGE_CELLS)
 
 class SimpleProcess(ca.Rule):
     def init_state(self,cell_coordinate):
-        init = 1.0 if cell_coordinate==(center,center) else 0.0
+        init = 1.0 if cell_coordinate in initial_set else 0.0
         return [init]
 
     def evolve_cell(self,last_cell_state,neighbors_last_states):
